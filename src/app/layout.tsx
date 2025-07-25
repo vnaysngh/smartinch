@@ -31,10 +31,16 @@ export default function RootLayout({
           </div>
           <div className="flex gap-4">
             <Link
-              href="/dashboard"
+              href="/"
               className="text-gray-700 hover:text-black font-medium transition"
             >
               Dashboard
+            </Link>
+            <Link
+              href="/portfolio"
+              className="text-gray-700 hover:text-black font-medium transition"
+            >
+              Portfolio
             </Link>
             <Link
               href="/create"

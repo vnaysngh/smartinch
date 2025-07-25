@@ -1,64 +1,90 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
+import SubscriptionCard from "../components/SubscriptionCard";
+import TokenListItem from "../components/TokenListItem";
+
+const mockSubscriptions = [
+  {
+    token: "USDC",
+    amount: "25.00",
+    receiver: "0xA1b2...C3d4",
+    frequency: "Monthly",
+    status: "Next payment in 5 days"
+  },
+  {
+    token: "ETH",
+    amount: "0.05",
+    receiver: "0xB5c6...D7e8",
+    frequency: "Weekly",
+    status: "Next payment in 2 days"
+  }
+];
+
+const mockPayments = [
+  { date: "2024-07-10", amount: "25.00 USDC" },
+  { date: "2024-07-12", amount: "0.05 ETH" }
+];
+
+const mockDustTokens = [
+  { name: "Shiba Inu", symbol: "SHIB", value: "$1.23" },
+  { name: "Basic Attention Token", symbol: "BAT", value: "$2.10" }
+];
+
+const mockPortfolio = [
+  { name: "USD Coin", symbol: "USDC", value: "$1,000.00" },
+  { name: "Ethereum", symbol: "ETH", value: "$2,500.00" }
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      <main className="max-w-3xl mx-auto px-4 py-16 w-full flex flex-col items-center text-center gap-10">
-        <Image
-          src="/next.svg"
-          alt="SmartInch Logo"
-          width={120}
-          height={40}
-          className="mb-2"
-        />
-        <h1 className="text-4xl font-extrabold tracking-tight mb-2">
-          SmartInch
-        </h1>
-        <p className="text-lg text-gray-600 max-w-xl mb-6">
-          The crypto-native subscription manager. Automate recurring payments,
-          clean wallet dust, and seamlessly swap assets using classic and
-          cross-chain swaps powered by 1inch.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/dashboard"
-            className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition"
-          >
-            Go to Dashboard
-          </Link>
-          <Link
-            href="/create"
-            className="px-6 py-3 rounded-lg bg-gray-100 text-gray-900 font-semibold shadow hover:bg-gray-200 transition"
-          >
-            Create Subscription
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-          <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
-            <h3 className="font-bold text-lg mb-2">Automate Payments</h3>
-            <p className="text-gray-600 text-sm">
-              Set up recurring crypto payments for any token, any frequency, any
-              wallet.
-            </p>
+    <div className="mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Left/Main Column: Active Subscriptions */}
+      <div className="md:col-span-2 space-y-8">
+        <section>
+          <h2 className="text-lg font-semibold mb-3">Active Subscriptions</h2>
+          <div className="grid gap-4">
+            {mockSubscriptions.map((sub, i) => (
+              <SubscriptionCard key={i} {...sub} />
+            ))}
           </div>
-          <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
-            <h3 className="font-bold text-lg mb-2">Clean Wallet Dust</h3>
-            <p className="text-gray-600 text-sm">
-              Identify and swap small token balances ("dust") into USDC with one
-              click.
-            </p>
+        </section>
+      </div>
+
+      {/* Right/Side Column: Upcoming Payments, Portfolio, Dust Tokens */}
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-lg font-semibold mb-3">Upcoming Payments</h2>
+          <ul className="space-y-2">
+            {mockPayments.map((p, i) => (
+              <li
+                key={i}
+                className="flex justify-between bg-gray-50 rounded-lg px-4 py-2 border border-gray-100"
+              >
+                <span className="text-gray-700 font-medium">{p.date}</span>
+                <span className="text-gray-600">{p.amount}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <h2 className="text-lg font-semibold mb-3">Portfolio</h2>
+          <div className="mb-3">
+            {mockPortfolio.map((token, i) => (
+              <TokenListItem key={i} {...token} />
+            ))}
           </div>
-          <div className="bg-white rounded-xl shadow p-6 border border-gray-100">
-            <h3 className="font-bold text-lg mb-2">Cross-Chain Swaps</h3>
-            <p className="text-gray-600 text-sm">
-              Seamlessly swap assets across chains, powered by 1inch's advanced
-              routing.
-            </p>
+        </section>
+        <section>
+          <h2 className="text-lg font-semibold mb-3">Dust Tokens</h2>
+          <div className="mb-3">
+            {mockDustTokens.map((token, i) => (
+              <TokenListItem key={i} {...token} />
+            ))}
           </div>
-        </div>
-      </main>
+          <button className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition">
+            Clean Wallet
+          </button>
+        </section>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const mockTokens = [
   { symbol: "USDC", name: "USD Coin" },
   { symbol: "ETH", name: "Ethereum" },
