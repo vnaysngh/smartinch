@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0f0f0f;
+  --surface: #1a1a1a;
+  --primary: #ff4473;
+  --secondary: #7f5af0;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --success: #16db65;
+  --warning: #ff9f1c;
+  --error: #ff3c38;
+  --font-sans: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.bg-surface {
+  background: var(--surface);
+}
+.bg-primary {
+  background: var(--primary);
+}
+.bg-secondary {
+  background: var(--secondary);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-success {
+  color: var(--success);
+}
+.text-warning {
+  color: var(--warning);
+}
+.text-error {
+  color: var(--error);
+}
+
+.border-surface {
+  border-color: var(--surface);
+}
+.border-primary {
+  border-color: var(--primary);
+}
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+/* Create Subscription Card Palette */
+:root {
+  --create-sub-bg: #0f0f0f;
+  --create-sub-surface: #1a1a1a;
+  --create-sub-primary: #ff4473;
+  --create-sub-step-highlight: #7f5af0;
+  --create-sub-input-border-idle: #2e2e2e;
+  --create-sub-input-border-focus: #7f5af0;
+  --create-sub-success: #16db65;
+  --create-sub-warning: #ff9f1c;
+  --create-sub-text-primary: #ffffff;
+  --create-sub-text-secondary: #b0b0b0;
+}
+
+.create-sub-bg {
+  background: var(--create-sub-bg);
+}
+.create-sub-surface {
+  background: var(--create-sub-surface);
+}
+.create-sub-primary {
+  background: var(--create-sub-primary);
+}
+.create-sub-step-highlight {
+  background: var(--create-sub-step-highlight);
+}
+.create-sub-success {
+  color: var(--create-sub-success);
+}
+.create-sub-warning {
+  color: var(--create-sub-warning);
+}
+.create-sub-text-primary {
+  color: var(--create-sub-text-primary);
+}
+.create-sub-text-secondary {
+  color: var(--create-sub-text-secondary);
+}
+.create-sub-border-surface {
+  border-color: var(--create-sub-surface);
+}
+.create-sub-border-primary {
+  border-color: var(--create-sub-primary);
+}
+.create-sub-border-step-highlight {
+  border-color: var(--create-sub-step-highlight);
+}
+.create-sub-border-input-idle {
+  border-color: var(--create-sub-input-border-idle);
+}
+.create-sub-border-input-focus {
+  border-color: var(--create-sub-input-border-focus);
 }
